@@ -1,7 +1,8 @@
 <?php
-namespace LeadDeskTasks;
 
-interface Anagram
+namespace Anagram;
+
+interface AnagramInterface
 {
     /**
      * Anagram problem

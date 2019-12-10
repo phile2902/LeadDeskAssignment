@@ -1,0 +1,26 @@
+{
+  "name": "phile/tests",
+  "type": "project",
+  "require": {},
+  "authors": [
+    {
+      "name": "Le Tieu Phi"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Anagram\\": [
+        "Anagram/"
+      ],
+      "MaxSubarray\\": [
+        "MaxSubarray/"
+      ],
+      "Test\\": [
+        "tests/"
+      ]
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6"
+  }
+}
