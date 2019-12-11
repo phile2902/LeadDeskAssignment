@@ -5,7 +5,6 @@ namespace Anagram;
 /**
  * Class Anagram
  * @package Anagram
- *
  * @see \Test\AnagramTest
  */
 class Anagram implements AnagramInterface

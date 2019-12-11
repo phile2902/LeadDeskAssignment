@@ -2,39 +2,38 @@
 
 namespace MaxSubarray;
 
-interface MaxSubarray
+/**
+ * Class MaxSubarray
+ * @package MaxSubarray
+ * @see \Test\MaxSubarrayTest
+ */
+class MaxSubarray implements MaxSubarrayInterface
 {
     /**
-     * Maximum subarray
-     *
-     * Description:
-     * Subarray is a part of the original one dimensional array. In this problem you need to find out the maximum sum
-     * that can be calculated by taking contiguous part of the original array.
-     *
-     * Tasks:
-     * 1) You need to create a concrete implementation of this interface. congiguous method should find the
-     *    contiguous subarray from given array that has the biggest sum.
-     * 2) You also need to create a PHPUnit test suite to test your implementation (https://phpunit.de/) with
-     *    few (>2) test cases
-     *
-     * Input definition (you don't need to check these in code):
-     * - Input array will have 1...1e6 elements
-     * - Integer values in the array will be from range -1e6...1e6.
-     * - Input array can contain non-numeric values. Resulting subarray is not allowed to extend over non-numeric values.
-     *   Numbers as text are OK however (e.g. '54')
-     *
-     * Development restrictions and rules:
-     * - Empty subarrays should not be considered. Selected subarray must contain at least one element.
-     * - Whole input array is also a valid subarray.
-     * - Use PHP 5.6/7 and mention the version used in the implementation as a comment
-     * - Follow the PSR-2 coding standard (http://www.php-fig.org/psr/psr-2/)
-     * - Write descriptive code that is easy to understand
-     *
-     * Example:
-     * - -1 1 5 -6 3 => maximum contiguous sum is 6 (1+5)
-     *
-     * @param array $array input values
-     * @return int maximum possible sum of contiguous subarray
+     * {@inheritDoc}
      */
-    public function contiguous($array);
+    public function contiguous($array): int
+    {
+        //The idea is to reference from Kadane's algorithm.
+        $maxSum = 0;
+        $sum = 0;
+        $maxValue = PHP_INT_MIN;
+
+        foreach ($array as $value) {
+            //The sum is set to 0 whenever the result of addition between it and previous sum is negative.
+            //By this way, we start a new sum from next positive number
+            $sum = max($sum + $value, 0);
+            //Store the possible maximum subarray sum
+            $maxSum = max($maxSum, $sum);
+            //Store the maximum value of element in case if the array contains only negative numbers
+            $maxValue = max($maxValue, $value);
+        }
+
+        //In case of max sum is equal to 0, it means that there are no positive numbers
+        if ($maxSum === 0) {
+            return $maxValue;
+        }
+
+        return $maxSum;
+    }
 }

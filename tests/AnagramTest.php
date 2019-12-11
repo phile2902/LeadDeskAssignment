@@ -8,7 +8,6 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class AnagramTest
  * @package Test
- *
  * @see \Anagram\Anagram
  */
 final class AnagramTest extends TestCase
