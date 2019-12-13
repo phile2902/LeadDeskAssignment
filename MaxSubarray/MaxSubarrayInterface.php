@@ -2,7 +2,7 @@
 
 namespace MaxSubarray;
 
-interface MaxSubarray
+interface MaxSubarrayInterface
 {
     /**
      * Maximum subarray
