@@ -28,17 +28,37 @@ final class MaxSubarrayTest extends TestCase
     }
 
     /**
+     * @dataProvider provideTestArrays
+     *
+     * @param array $array
+     * @param int   $expectedMaxSubarray
+     *
+     * @return void
+     */
+    public function testContiguousInAnotherSolution(array $array, int $expectedMaxSubarray)
+    {
+        $maxSubArray = new MaxSubarray();
+
+        static::assertSame($maxSubArray->contiguousInAnotherSolution($array), $expectedMaxSubarray);
+    }
+
+    /**
      * @return array
      */
     public function provideTestArrays(): array
     {
         //$array, $expectedMaxSubarray
         return [
-            'mix between positive and negative numbers' => [[-1, 1, 5, -6, 3, 0], 6],
-            'only positive numbers'                     => [[1, 2, 3, 4], 10],
-            'only negative numbers'                     => [[-5, -6, -3, -2], -2],
-            'negative number with 0'                    => [[-5, -6, -3, -2, 0], 0],
-            'number are texts'                          => [[-1, '1', '5', -6, '3', 0], 6],
+            'only one positive subarray'                      => [[5], 5],
+            'only one negative subarray'                      => [[-5], -5],
+            'only one number 0 subarray'                      => [[0], 0],
+            'mix between positive and negative numbers'       => [[-1, 1, 5, -6, 3, 0], 6],
+            'only positive numbers'                           => [[1, 2, 3, 4], 10],
+            'only negative numbers'                           => [[-5, -6, -3, -2], -2],
+            'negative number with 0'                          => [[-5, -6, -3, -2, 0], 0],
+            'number are texts'                                => [[-1, '1', '5', -6, '3', 0], 6],
+            'subarray has non-numeric value'                  => [[-1, 'abc', '1', '5', -6, '3', 0], 6],
+            'max subarray does not contain non-numeric value' => [[-1, '1', 'abc', '5', -6, '3', 0], 5],
         ];
     }
 }
