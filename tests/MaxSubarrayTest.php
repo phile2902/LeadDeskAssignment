@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Test;
 
+use Exception;
 use MaxSubarray\MaxSubarray;
 use PHPUnit\Framework\TestCase;
 
@@ -19,6 +22,7 @@ final class MaxSubarrayTest extends TestCase
      * @param int   $expectedMaxSubarray
      *
      * @return void
+     * @throws Exception
      */
     public function testContiguous(array $array, int $expectedMaxSubarray)
     {
@@ -28,18 +32,53 @@ final class MaxSubarrayTest extends TestCase
     }
 
     /**
+     * @return void
+     */
+    public function testContiguousThrowsExceptionInvalidSubarray()
+    {
+        $maxSubArray = new MaxSubarray();
+
+        $invalidSubarray = [1, -2, '', 4];
+
+        try {
+            $maxSubArray->contiguous($invalidSubarray);
+            static::fail(Exception::class . ' should be thrown.');
+        } catch (Exception $ex) {
+            static::assertContains('Input subarray is invalid.', $ex->getMessage());
+        }
+    }
+
+    /**
      * @dataProvider provideTestArrays
      *
      * @param array $array
      * @param int   $expectedMaxSubarray
      *
      * @return void
+     * @throws Exception
      */
     public function testContiguousInAnotherSolution(array $array, int $expectedMaxSubarray)
     {
         $maxSubArray = new MaxSubarray();
 
         static::assertSame($maxSubArray->contiguousInAnotherSolution($array), $expectedMaxSubarray);
+    }
+
+    /**
+     * @return void
+     */
+    public function testContiguousInAnotherSolutionThrowsExceptionInvalidSubarray()
+    {
+        $maxSubArray = new MaxSubarray();
+
+        $invalidSubarray = [1, -2, '', 4];
+
+        try {
+            $maxSubArray->contiguousInAnotherSolution($invalidSubarray);
+            static::fail(Exception::class . ' should be thrown.');
+        } catch (Exception $ex) {
+            static::assertContains('Input subarray is invalid.', $ex->getMessage());
+        }
     }
 
     /**
