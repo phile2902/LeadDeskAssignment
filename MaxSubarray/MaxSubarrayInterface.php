@@ -36,5 +36,5 @@ interface MaxSubarrayInterface
      * @param array $array input values
      * @return int maximum possible sum of contiguous subarray
      */
-    public function contiguous($array);
+    public function contiguous(array $array): int;
 }

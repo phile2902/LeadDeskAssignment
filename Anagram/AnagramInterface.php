@@ -36,5 +36,5 @@ interface AnagramInterface
      * @param string $word2 second word
      * @return boolean true if word are anagrams of each other, false otherwise
      */
-    public function isAnagram($word1, $word2);
+    public function isAnagram(string $word1, string $word2): bool;
 }

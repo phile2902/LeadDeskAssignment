@@ -24,7 +24,7 @@ class MaxSubarray implements MaxSubarrayInterface
      * @return int
      * @throws Exception
      */
-    public function contiguousInAnotherSolution($array): int
+    public function contiguousInAnotherSolution(array $array): int
     {
         $maxSum = PHP_INT_MIN;
         $arrayLength = count($array);
@@ -68,7 +68,7 @@ class MaxSubarray implements MaxSubarrayInterface
      * Time complexity is O(n) because it uses only one for loop.
      *
      */
-    public function contiguous($array): int
+    public function contiguous(array $array): int
     {
         $maxSumInFinal = 0;
         $maxSumAtCurrent = 0;

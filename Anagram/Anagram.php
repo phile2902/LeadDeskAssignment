@@ -21,7 +21,7 @@ class Anagram implements AnagramInterface
      *
      * @return bool
      */
-    public function isAnagramInAnotherSolution($word1, $word2): bool
+    public function isAnagramInAnotherSolution(string $word1, string $word2): bool
     {
         //If lengths of them are different, they are not anagrams
         if (strlen($word1) !== strlen($word2)) {
@@ -42,7 +42,7 @@ class Anagram implements AnagramInterface
      * For me, i will choose this solution for this issue because it is shorter, cleaner and good enough complexity.
      *
      */
-    public function isAnagram($word1, $word2): bool
+    public function isAnagram(string $word1, string $word2): bool
     {
         return count_chars($word1, 1) === count_chars($word2, 1);
     }
