@@ -38,7 +38,7 @@ final class MaxSubarrayTest extends TestCase
     {
         $maxSubArray = new MaxSubarray();
 
-        $invalidSubarray = [1, -2, '', 4];
+        $invalidSubarray = [1, -2, [], 4];
 
         try {
             $maxSubArray->contiguous($invalidSubarray);
@@ -71,7 +71,7 @@ final class MaxSubarrayTest extends TestCase
     {
         $maxSubArray = new MaxSubarray();
 
-        $invalidSubarray = [1, -2, '', 4];
+        $invalidSubarray = [1, -2, [], 4];
 
         try {
             $maxSubArray->contiguousInAnotherSolution($invalidSubarray);

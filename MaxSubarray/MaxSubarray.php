@@ -36,7 +36,7 @@ class MaxSubarray implements MaxSubarrayInterface
             //Then compare it to the maximum sum
             for ($j = $i; $j < $arrayLength; $j++) {
                 //If the input subarray is empty, throw an Exception
-                if ($array[$j] === '') {
+                if ($array[$j] === []) {
                     throw new Exception('Input subarray is invalid.');
                 }
 
@@ -76,7 +76,7 @@ class MaxSubarray implements MaxSubarrayInterface
 
         foreach ($array as $value) {
             //If the input subarray is empty, throw an Exception
-            if ($value === '') {
+            if ($value === []) {
                 throw new Exception('Input subarray is invalid.');
             }
 
